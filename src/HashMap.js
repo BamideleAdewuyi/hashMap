@@ -23,7 +23,24 @@ class HashMap {
                 nextNode: null
             };
             return;
+        };
+
+        for (const bucket of this.capacity) {
+            let last = bucket;
+            while (last != null || last != undefined) {
+                if (last.key === key) {
+                    last.value = value;
+                    return;
+                }
+                last = last.nextNode;
+            }
         }
+
+        let last = this.capacity[hashCode];
+        while (last.nextNode != null) {
+            last = last.nextNode
+        };
+        last.nextNode = {key: key, value: value, nextNode: null};
 
     };
 
