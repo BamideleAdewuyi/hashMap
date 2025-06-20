@@ -17,7 +17,14 @@ class HashMap {
 
     set(key, value) {
         const hashCode = this.hash(key);
-        this.capacity[hashCode] = {key: value};
+        if (this.capacity[hashCode] === undefined) {
+            this.capacity[hashCode] = {key: key,
+                value: value,
+                nextNode: null
+            };
+            return;
+        }
+
     };
 
     get(key) {
@@ -25,7 +32,7 @@ class HashMap {
     };
 
     has(key) {
-
+        
     };
 
     remove(key) {
