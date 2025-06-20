@@ -32,7 +32,16 @@ class HashMap {
     };
 
     has(key) {
-        
+        for (const bucket of this.capacity) {
+            let last = bucket;
+            while (last != null || last != undefined) {
+                if (last.key === key) {
+                    return true;
+                }
+                last = last.nextNode;
+            }
+        }
+        return false;
     };
 
     remove(key) {
