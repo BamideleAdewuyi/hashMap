@@ -4,3 +4,5 @@ class HashMap {
         this.capacity = new Array(16);
     }
 }
+
+export default HashMap;
