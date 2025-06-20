@@ -9,14 +9,15 @@ class HashMap {
 
         const primeNumber = 19;
         for (let i = 0; i < key.length; i++) {
-            hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % 16
+            hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity.length
         }
 
         return hashCode;
     };
 
     set(key, value) {
-
+        const hashCode = this.hash(key);
+        this.capacity[hashCode] = {key: value};
     };
 
     get(key) {
