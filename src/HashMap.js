@@ -79,7 +79,7 @@ class HashMap {
     };
 
     clear() {
-
+        this.capacity = new Array(16);
     };
 
     keys() {
