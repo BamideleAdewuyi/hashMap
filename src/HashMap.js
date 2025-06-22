@@ -20,7 +20,7 @@ class HashMap {
         if (this.capacity[hashCode] === undefined) {
             this.capacity[hashCode] = {key: key,
                 value: value,
-                nextNode: null
+                nextNode: undefined
             };
             return;
         };
@@ -40,7 +40,7 @@ class HashMap {
         while (last.nextNode != null) {
             last = last.nextNode
         };
-        last.nextNode = {key: key, value: value, nextNode: null};
+        last.nextNode = {key: key, value: value, nextNode: undefined};
 
     };
 
