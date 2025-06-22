@@ -71,7 +71,23 @@ class HashMap {
     };
 
     remove(key) {
+        for (let i = 0; i < this.capacity.length; i++) {
+            if (this.capacity[i] != undefined && this.capacity[i].key === key && this.capacity[i].nextNode === undefined) {
+                this.capacity[i] = undefined;
+                return true;
+            };
 
+            let last = this.capacity[i];
+
+            while (last != undefined) {
+                if (last.nextNode != undefined && last.nextNode.key === key) {
+                    last.nextNode = last.nextNode.nextNode;
+                    return true;
+                }
+                last = last.nextNode;
+            };
+        }
+        return false;
     };
 
     length() {
