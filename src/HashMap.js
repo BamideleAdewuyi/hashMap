@@ -93,7 +93,17 @@ class HashMap {
     }
 
     length() {
-
+        let total = 0;
+        for (const bucket of this.capacity) {
+            if (bucket != undefined) {
+                let last = bucket;
+                while (last != undefined) {
+                    total += 1;
+                    last = last.nextNode
+                }
+            }
+        }
+        return total;
     };
 
     clear() {
