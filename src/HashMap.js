@@ -172,10 +172,16 @@ class HashMap {
         this.capacity = newMap;
 
         for (const pair of entries) {
-            this.set(pair[0], pair[1])
+            this.setNoRehash(pair[0], pair[1])
         };
 
         return;
+    }
+
+    setNoRehash(key, value) {
+        const index = this.hash(key);
+        const newNode = {key, value, nextNode: this.capacity[index]};
+        this.capacity[index] = newNode;
     }
 }
 
