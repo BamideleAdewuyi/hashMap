@@ -141,7 +141,17 @@ class HashMap {
     };
 
     entries() {
-
+        let allEntries = [];
+        for (const bucket of this.capacity) {
+            if (bucket != undefined) {
+                let last = bucket;
+                while (last != undefined) {
+                    allEntries.push([last.key, last.value])
+                    last = last.nextNode;
+                }
+            }
+        }
+        return allEntries;
     };
 }
 
