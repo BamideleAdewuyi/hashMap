@@ -111,7 +111,18 @@ class HashMap {
     };
 
     keys() {
+        let allKeys = [];
+        for (const bucket of this.capacity) {
+            if (bucket != undefined) {
+                let last = bucket;
+                while (last != undefined) {
+                    allKeys.push(last.key)
+                    last = last.nextNode;
+                }
+            }
+        }
 
+        return allKeys;
     };
 
     values() {
