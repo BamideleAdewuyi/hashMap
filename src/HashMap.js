@@ -22,6 +22,9 @@ class HashMap {
                 value: value,
                 nextNode: undefined
             };
+            if (this.checkLoadFactor()) {
+                this.rehash()
+            }
             return;
         };
 
@@ -41,6 +44,10 @@ class HashMap {
             last = last.nextNode
         };
         last.nextNode = {key: key, value: value, nextNode: undefined};
+
+        if (this.checkLoadFactor()) {
+            this.rehash();
+        }
 
     };
 
