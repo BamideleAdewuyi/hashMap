@@ -71,24 +71,26 @@ class HashMap {
     };
 
     remove(key) {
-        for (let i = 0; i < this.capacity.length; i++) {
-            if (this.capacity[i] != undefined && this.capacity[i].key === key && this.capacity[i].nextNode === undefined) {
-                this.capacity[i] = undefined;
-                return true;
-            };
+        const index = this.hash(key);
+        let current = this.capacity[index];
+        let prev = null;
 
-            let last = this.capacity[i];
-
-            while (last != undefined) {
-                if (last.nextNode != undefined && last.nextNode.key === key) {
-                    last.nextNode = last.nextNode.nextNode;
-                    return true;
-                }
-                last = last.nextNode;
-            };
+        while (current) {
+            console.log(current.key)
+            if (current.key === key) {
+            if (prev === null) {
+                this.capacity[index] = current.nextNode;
+            } else {
+                prev.nextNode = current.nextNode;
+            }
+            return true;
+            }
+            prev = current;
+            current = current.nextNode;
         }
+
         return false;
-    };
+    }
 
     length() {
 
