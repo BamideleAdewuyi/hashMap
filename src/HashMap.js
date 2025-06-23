@@ -156,6 +156,19 @@ class HashMap {
 
     checkLoadFactor() {
         return this.length() > (this.capacity.length * this.loadFactor);
+    };
+
+    rehash() {
+        const newCap = this.capacity.length * 2;
+        const newMap = new Array(newCap);
+        const entries = this.entries();
+        this.capacity = newMap;
+
+        for (const pair of entries) {
+            this.set(pair[0], pair[1])
+        };
+
+        return;
     }
 }
 
