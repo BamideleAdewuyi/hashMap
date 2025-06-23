@@ -153,6 +153,10 @@ class HashMap {
         }
         return allEntries;
     };
+
+    checkLoadFactor() {
+        return this.length() > (this.capacity.length * this.loadFactor);
+    }
 }
 
 export default HashMap;
